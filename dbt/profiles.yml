@@ -1,0 +1,46 @@
+config:
+  debug: false 
+#  quiet: true
+#  warn_error: false
+#  log_format: true
+
+postgres:
+  outputs:
+
+    dev:
+      type: postgres
+      threads: [1 or more]
+      host: [host]
+      port: [port]
+      user: [dev_username]
+      pass: [dev_password]
+      dbname: [dbname]
+      schema: [dev_schema]
+
+    prod:
+      type: postgres
+      threads: [1 or more]
+      host: [host]
+      port: [port]
+      user: [prod_username]
+      pass: [prod_password]
+      dbname: [dbname]
+      schema: [prod_schema]
+
+  target: dev
+
+clickhouse:
+  outputs:
+
+    dev:
+      type: clickhouse
+      host: localhost
+      port: 9000
+      user: de_user
+      password: de_pass
+      schema: dbt
+      secure: False
+      verify: False
+      connect_timeout: 10
+
+  target: dev
