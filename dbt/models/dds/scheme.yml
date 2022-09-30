@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: stg
+    tables: 
+      - name: stg
+        columns:
+          - name: id
+            description: ""
+            tests:
+              - not_null  
+          - name: timestamp
+            description: ""
+            tests:
+              - not_null
+

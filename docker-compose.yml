@@ -10,35 +10,35 @@ x-toolkit-common: &toolkit-common
 
 
 volumes:
-  clickhouse-data:
+  # clickhouse-data:
   metabase-data:
   metabase-db:
   postgres-data:
   airflow-pg-data:
 
 services:
-  clickhouse:
-    image: clickhouse/clickhouse-server:${CH_VERSION:-latest}
-    hostname: clickhouse
-    ports:
-      - 8123:8123
-      - 9000:9000
-    volumes:
-      # - "./clickhouse/data:/var/lib/clickhouse/"
-      - clickhouse-data:/var/lib/clickhouse/
-      - "./clickhouse/logs:/var/log/clickhouse-server/"
-      # - "./clickhouse/users.xml:/etc/clickhouse-server/users.xml"
-      # - "./clickhouse/config.xml:/etc/clickhouse-server/config.xml"
-      # - "./clickhouse/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql"
-    # depends_on:
-    #   - kafka
-    environment:
-      - CLICKHOUSE_DB=${DE_DB_NAME:-de}
-      - CLICKHOUSE_USER=${DE_USERNAME:-de_user}
-      - CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT=1 
-      - CLICKHOUSE_PASSWORD=${DE_PASSWORD:-de_pass}
-      - CLICKHOUSE_INIT_TIMEOUT=12
-    <<: *toolkit-common
+  # clickhouse:
+  #   image: clickhouse/clickhouse-server:${CH_VERSION:-latest}
+  #   hostname: clickhouse
+  #   ports:
+  #     - 8123:8123
+  #     - 9000:9000
+  #   volumes:
+  #     # - "./clickhouse/data:/var/lib/clickhouse/"
+  #     - clickhouse-data:/var/lib/clickhouse/
+  #     - "./clickhouse/logs:/var/log/clickhouse-server/"
+  #     # - "./clickhouse/users.xml:/etc/clickhouse-server/users.xml"
+  #     # - "./clickhouse/config.xml:/etc/clickhouse-server/config.xml"
+  #     # - "./clickhouse/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql"
+  #   # depends_on:
+  #   #   - kafka
+  #   environment:
+  #     - CLICKHOUSE_DB=${DE_DB_NAME:-de}
+  #     - CLICKHOUSE_USER=${DE_USERNAME:-de_user}
+  #     - CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT=1 
+  #     - CLICKHOUSE_PASSWORD=${DE_PASSWORD:-de_pass}
+  #     - CLICKHOUSE_INIT_TIMEOUT=12
+  #   <<: *toolkit-common
   airflow-postgresql:
     image: bitnami/postgresql:${AIRFLOW_DATABASE_VERSION:-airflow}
     ports:
@@ -197,12 +197,10 @@ services:
     # image: ghcr.io/dbt-labs/dbt-clickhouse:${DBT_VERSION:-1.2.0}
     build: dbt/
     volumes:
-      - "./dbt/project:/usr/app"
+      - "./dbt:/usr/app"
       - "./dbt/profiles.yml:/root/.dbt/profiles.yml"
     ports:
       - 9090:9090
-    depends_on:
-      - clickhouse
     command: "docs serve --port 9090"
     environment:
       - DBT_USER=de_user

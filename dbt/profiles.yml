@@ -4,18 +4,18 @@ config:
 #  warn_error: false
 #  log_format: true
 
-postgres:
+prj:
   outputs:
 
     dev:
       type: postgres
-      threads: [1 or more]
-      host: [host]
-      port: [port]
-      user: [dev_username]
-      pass: [dev_password]
-      dbname: [dbname]
-      schema: [dev_schema]
+      threads: 2
+      host: postgresql
+      port: 5432
+      user: de_user
+      pass: de_pass
+      dbname: de
+      schema: de
 
     prod:
       type: postgres
@@ -29,18 +29,3 @@ postgres:
 
   target: dev
 
-clickhouse:
-  outputs:
-
-    dev:
-      type: clickhouse
-      host: localhost
-      port: 9000
-      user: de_user
-      password: de_pass
-      schema: dbt
-      secure: False
-      verify: False
-      connect_timeout: 10
-
-  target: dev
