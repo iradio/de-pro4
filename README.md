@@ -36,7 +36,7 @@ prj:
       user: de_user
       pass: de_pass
       dbname: de
-      schema: dbt
+      schema: stg
 ```
 Проверить соединение
 ``` bash
