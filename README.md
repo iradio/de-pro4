@@ -62,6 +62,7 @@ dbt compile
 
 ## Генерация документации
 ``` bash
+cd dbt
 dbt docs generate
 ```
 Запускается по адресу [http://localhost:9090](http://localhost:9090)
