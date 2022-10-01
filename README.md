@@ -3,6 +3,8 @@
 
 Во всех системах используются креды: de_user / de_pass , кроме metabase (там при первом старте)
 
+Источник факлой - https://data.ijklmn.xyz/events/
+
 Запуск инфрастуктуры
 ``` bash
 docker-compose up -d
