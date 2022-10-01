@@ -1,16 +1,20 @@
+# Sources definitions and tests
 version: 2
 
 sources:
   - name: stg
     tables: 
-      - name: stg
+      - name: logs
         columns:
           - name: id
             description: ""
             tests:
               - not_null  
-          - name: timestamp
+          - name: create_ts
             description: ""
             tests:
               - not_null
-
+          - name: value
+            description: ""
+            tests:
+              - not_null

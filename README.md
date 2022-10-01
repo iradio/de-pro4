@@ -22,9 +22,10 @@ source venv/bin/activate
 pip install dbt-postgres
 dbt
 ```
-Настроить профиль соединения DBT в файле `~/.dbt/profiles.yml`
+Настроить профиль соединения DBT в файле `~/.dbt/profiles.yml`.
+
 ``` yml
-semd_data:
+prj:
   outputs:
 
     dev:
@@ -35,7 +36,7 @@ semd_data:
       user: de_user
       pass: de_pass
       dbname: de
-      schema: dbt_dev
+      schema: dbt
 ```
 Проверить соединение
 ``` bash

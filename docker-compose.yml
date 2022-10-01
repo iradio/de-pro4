@@ -140,9 +140,7 @@ services:
       - '5432:5432'
     volumes:
       - postgres-data:/bitnami/postgresql
-      # - "./postgresql/data:/bitnami/postgresql"
-#      - "./airflow/1_create_de_user_d.sql:/docker-entrypoint-initdb.d/1_create_de_user_db.sql"
-#      - "./airflow/create_airflow_db.sql:/docker-entrypoint-initdb.d/create_airflow_db.sql"
+      - "./postgresql/init_db.sql:/docker-entrypoint-initdb.d/init_db.sql"
     environment:
       - POSTGRESQL_DATABASE=${DE_DB_NAME:-de}
       - POSTGRESQL_USERNAME=${DE_USERNAME:-de_user}

@@ -1,5 +1,7 @@
 venv
 
+dbt/.user.yml
+
 # data
 data
 
