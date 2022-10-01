@@ -37,6 +37,8 @@ prj:
       pass: de_pass
       dbname: de
       schema: stg
+
+  target: dev
 ```
 Проверить соединение
 ``` bash
