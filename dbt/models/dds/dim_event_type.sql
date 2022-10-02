@@ -1,3 +1,4 @@
+with t as (
 select distinct case 
 	when object_value::JSON ->> 'page_url_path' = '/confirmation' then 'transaction'
 	when object_value::JSON ->> 'page_url_path' = '/cart' then 'pageview_cart'
@@ -6,3 +7,8 @@ select distinct case
 	else 'other'
 end as event_type
 FROM {{source('stg','events_log')}}
+)
+select 
+	{{dbt_utils.surrogate_key(['event_type'])}}::varchar(32) id
+	,*
+from t
