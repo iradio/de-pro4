@@ -1,0 +1,32 @@
+# Sources definitions and tests
+version: 2
+
+sources:
+  - name: stg
+    tables: 
+      - name: events_log
+        columns:
+          - name: id
+            description: ""
+            tests:
+              - not_null  
+          - name: md5
+            description: ""
+            tests:
+              - not_null
+          - name: object_id
+            description: ""
+            tests:
+              - not_null
+          - name: object_value
+            description: ""
+            tests:
+              - not_null
+          - name: load_ts
+            description: ""
+            tests:
+              - not_null
+          - name: filename
+            description: ""
+            tests:
+              - not_null

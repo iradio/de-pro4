@@ -34,12 +34,11 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   prj:
     # Config indicated by + and applies to all files under models/example/
-    ods:
-      +enabled: true
-      +materialized: table
     dds:
+      +schema: dds
       +enabled: true
       +materialized: table
     cdm:
+      +schema: cdm
       +enabled: true
       +materialized: view
